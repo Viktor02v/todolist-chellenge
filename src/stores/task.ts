@@ -61,9 +61,9 @@ export const useTaskStore = defineStore('task', () => {
 	};
 	
 	const startEditingTask = (task) => {
-		editedTaskContent.value = task.content; // pre-fill with existing content
-		toggleToEddit.value = true; // open the edit modal
-		currentEditingTaskId.value = task.id; // store the id of the task being edited
+		editedTaskContent.value = task.content; 
+		toggleToEddit.value = true;
+		currentEditingTaskId.value = task.id; 
 	};
 	
 	const completedTasks = computed(() => {
