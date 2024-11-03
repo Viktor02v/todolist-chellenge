@@ -38,6 +38,32 @@ plugins: [
           borderRadius: '9999px', // Full rounding
       },
       })
+   },
+	function({ addUtilities }) {
+      addUtilities({
+      '.btn-custom-triggered': {
+         padding: '0.5rem',
+         width: '100%',
+          backgroundColor: '#145a32', // green-400
+         fontSize: '1.15rem',
+          fontWeight: '700', // Bold
+         color: '#ffffff',
+          borderRadius: '9999px', // Full rounding
+      },
+      })
+   },
+	function({ addUtilities }) {
+      addUtilities({
+      '.btn-custom2-triggered': {
+         padding: '0.5rem',
+         width: '100%',
+          backgroundColor: '#145a32', // green-400
+         fontSize: '1rem',
+          fontWeight: '700', // Bold
+         color: '#ffffff',
+          borderRadius: '9999px', // Full rounding
+      },
+      })
    }
 ],
 }
