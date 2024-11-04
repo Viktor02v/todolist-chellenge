@@ -17,6 +17,16 @@ export const useTaskStore = defineStore('task', () => {
 	const editedTaskContent = ref('');
 	const currentEditingTaskId = ref(null);
 	const isCompleted = ref(false);
+	const addingTime = new Date();
+
+	const timeZone = {
+	year:  addingTime.getFullYear(),
+	month: addingTime.getUTCMonth() + 1,
+	day: addingTime.getDate(),
+	hour: addingTime.getHours(),
+	minutes:addingTime.getMinutes(),
+	}
+
 	let nextId = 1;
 	
 	const handleContent = (event) => {
@@ -31,14 +41,15 @@ export const useTaskStore = defineStore('task', () => {
 			id: nextId,
 			content: taskContent.value.trim(),
 			status: isCompleted.value,
+			time: `${timeZone.year}-${timeZone.month}-${timeZone.day}-${timeZone.hour}:${timeZone.minutes}`,
 		};
 	
 		if (taskContent.value.length <= 4) {
 			alert(" You need to type at least 5 characters");
 		} else {
 			tasks.value.push(newTask);
-			nextId++,
-				toggleToAdd.value = false
+			nextId++;
+			toggleToAdd.value = false;
 		}
 	}
 	
