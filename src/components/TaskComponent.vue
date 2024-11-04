@@ -3,15 +3,24 @@
 import Delete from 'vue-material-design-icons/DeleteOutline.vue'
 import Edit from 'vue-material-design-icons/PencilOutline.vue'
 
-const props = defineProps({
-	task: Object,
-})
+type Tasks  = {
+		id:number,
+		content:string,
+		status: boolean,
+		time: string,
+	};
+
+const props = defineProps<{
+	task:Tasks,
+}>()
+	
+
 //  Import Pinia Store
 import { useTaskStore } from '@/stores/task'
 const taskStore = useTaskStore()
 </script>
 <template>
-	<div class="flex mb-3 w-full bg-white  justify-between items-center px-5 py-2 md:py-4 rounded-full">
+	<div v-if="props.task" class="flex mb-3 w-full bg-white  justify-between items-center px-5 py-2 md:py-4 rounded-full">
 		<div class="flex gap-5 w-full items-center">
 			<input v-model="props.task.status" class="h-[15px] w-[15px] md:h-[20px] md:w-[20px]" type="checkbox">
 			<p class="text-[1.10rem] md:text-[1.25rem] w-[100px] overflow-x-auto scroll-auto md:w-[890px]">{{ props.task.content }}</p>
