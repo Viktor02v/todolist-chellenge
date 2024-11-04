@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {watch} from 'vue'
 // Components
 import AllTasksList from '@/components/AllTasksList.vue';
 import CompletedTasksList from '@/components/CompletedTasksList.vue';
@@ -10,6 +11,8 @@ import AddTaskWindow from '@/components/AddTaskWindow.vue';
 import { useTaskStore } from '@/stores/task'
 const taskStore = useTaskStore()
 
+
+watch(taskStore.tasks, taskStore.saveTasks, {deep:true});
 </script>
 
 <template>

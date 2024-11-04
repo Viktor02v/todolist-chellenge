@@ -2,7 +2,7 @@ import { ref, reactive, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useTaskStore = defineStore('task', () => {
-	const tasks = ref([]);
+	const tasks = ref((JSON.parse(localStorage.getItem('tasks') || '[]')));
 
 	const toggleToAdd = ref(false);
 	const toggleToEddit = ref(false);
@@ -103,5 +103,9 @@ export const useTaskStore = defineStore('task', () => {
 		toggleTasksView.completed = false;
 		toggleTasksView.uncompleted = true;
 	};
-return { tasks, toggleToAdd, toggleToEddit, toggleTasksView, handleContent, handleEditContent, addTask, deleteTask, editTask, startEditingTask, completedTasks, unCompletedTasks, showCompletedTasks, showAllTasks, showUnCompletedTasks };
+
+	const saveTasks = () =>{
+		localStorage.setItem('tasks', JSON.stringify(tasks.value))
+	}
+return { tasks, toggleToAdd, toggleToEddit, toggleTasksView, handleContent, handleEditContent, addTask, deleteTask, editTask, startEditingTask, completedTasks, unCompletedTasks, showCompletedTasks, showAllTasks, showUnCompletedTasks, saveTasks };
 })
