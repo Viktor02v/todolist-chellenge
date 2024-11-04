@@ -8,10 +8,10 @@ const taskStore = useTaskStore()
 
 </script>
 <template>
-	<div v-if="taskStore.toggleTasksView.completed" class="w-full h-full">
+	<section v-if="taskStore.toggleTasksView.completed" class="w-full h-full">
 		<div v-for="task in taskStore.completedTasks" :key="task.id" class="w-full">
 			<!-- Task Component -->
 			<TaskComponent :task=task />
 		</div>
-	</div>
+	</section>
 </template>
